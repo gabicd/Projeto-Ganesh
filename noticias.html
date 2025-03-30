@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style2.css">
+    <script src="news.js" defer></script>
+    <title>Noticias</title>
+</head>
+<body>
+    <header class="header">
+        <span id="logo-header">
+            <img id="logo-branco" src="assets/GaneshLogoBranco.png" alt="logo do ganesh em branco">
+            <label id="logo" for="logo-branco">GANESH</label>
+        </span>
+        <span id="pags-header">
+            <a id="aba-noticias" href="noticias.html">Notícias</a>
+            <img onclick="switchNewsLanguage()" id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
+            <label onclick="switchNewsLanguage()" id="lang" for="bandeira">pt-BR</label>
+        </span>
+    </header>
+
+    <div id="div-noticias">
+        <p id="titulo">Notícias</p>
+        <div id="div-cards">
+        </div>
+        <span id="navigation-buttons">
+            <button onclick="backPage()" class="navigation">←</button>
+            <button id="page-number">1</button>
+            <button onclick="forwardPage()" class="navigation">→</button>
+        </span>
+    </div>
+
+    <footer class="footer">
+        <span id="redes-sociais">
+            <img class="iconsRedes" src="assets/twitter 1.svg" alt="">
+            <img class="iconsRedes" src="assets/Group.svg" alt="">
+            <img class="iconsRedes" src="assets/facebook 1.svg" alt="">
+            <img class="iconsRedes" src="assets/github 1.svg" alt="">
+            <img class="iconsRedes" src="assets/youtube 1.svg" alt="">
+        </span>
+        <p id="copyright">&#169 2025 Ganesh</p>
+    </footer>
+</body>
+</html>

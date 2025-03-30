@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <title>Projeto Ganesh</title>
+</head>
+<body>
+    <header class="header">
+        <span id="logo-header">
+            <img id="logo-branco" src="assets/GaneshLogoBranco.png" alt="logo do ganesh em branco">
+            <label id="logo" for="logo-branco">GANESH</label>
+        </span>
+        <span id="pags-header">
+            <a id="aba-noticias" href="noticias.html">Notícias</a>
+            <img onclick="switchLanguage()" id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
+            <label onclick="switchLanguage()" id="lang" for="bandeira">pt-BR</label>
+        </span>
+    </header>
+    <div id="logo-div">
+        <img id="logo-padrao" src="assets/GaneshLogo.png" alt="logo do ganesh">
+        <p id="nome-grupo">GANESH</p>
+        <div id="resumo-div">
+            <p id="resumo-grupo"></p>
+        </div>
+        
+   
+
+    <div id="infos-div">
+        <p id="titulo"> Sobre o <span id="highlight">Ganesh</span></p>
+        <div id="div-sobre-texto">
+            <p class="sobre-texto" id="sobre-texto1"></p>
+            <p class="sobre-texto" id="sobre-texto2"></p>
+            <button id="more">
+                <img id="lupa" src="assets/lupa.png" alt="lupa">
+                Saiba Mais
+            </button>
+        </div>
+    </div>
+    <footer class="footer">
+        <span id="redes-sociais">
+            <img class="iconsRedes" src="assets/twitter 1.svg" alt="">
+            <img class="iconsRedes" src="assets/Group.svg" alt="">
+            <img class="iconsRedes" src="assets/facebook 1.svg" alt="">
+            <img class="iconsRedes" src="assets/github 1.svg" alt="">
+            <img class="iconsRedes" src="assets/youtube 1.svg" alt="">
+        </span>
+        <p id="copyright">&#169 2025 Ganesh</p>
+    </footer>
+</body>
+</html>
