@@ -6,8 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="style2.css">
-    <script src="news.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="news.js" defer></script>
+    <script type="module" src="global.js"></script>
     <title>Noticias</title>
 </head>
 <body>
@@ -18,23 +19,23 @@
         </span>
         <span id="pags-header">
             <a id="aba-noticias" href="noticias.html">Notícias</a>
-            <img onclick="switchNewsLanguage()" id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
-            <label onclick="switchNewsLanguage()" id="lang" for="bandeira">pt-BR</label>
+            <img id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
+            <label id="lang" for="bandeira">pt-BR</label>
         </span>
     </header>
 
     <div id="div-noticias">
-        <p id="titulo">Notícias</p>
+        <p id="titulo-n">Notícias</p>
         <div id="div-cards">
         </div>
         <span id="navigation-buttons">
-            <button onclick="backPage()" class="navigation">←</button>
+            <button class="navigation" id="back-button">←</button>
             <button id="page-number">1</button>
-            <button onclick="forwardPage()" class="navigation">→</button>
+            <button class="navigation" id="forward-button">→</button>
         </span>
     </div>
 
-    <footer class="footer">
+    <footer class="footer" id="footer-noticias">
         <span id="redes-sociais">
             <img class="iconsRedes" src="assets/twitter 1.svg" alt="">
             <img class="iconsRedes" src="assets/Group.svg" alt="">

@@ -1,20 +1,8 @@
-let ganeshData
-const limite = 5
-let lastIndex
-const bandeiraBR = "assets/BR.svg"
-const bandeiraUS = "assets/US.svg"
-
-async function loadData() {
-    try{
-        const response = await fetch('GaneshData.json')
-        ganeshData = await response.json()
-    }
-    
-    catch(error){
-        console.error(error)
-    }
-}
-
+import { ganeshData, loadData, bandeiraBR, bandeiraUS, bandeira, idioma } from "./global.js";
+const limite = 5    //limite de noticias por pagina
+let lastIndex       //guarda o index da ultima noticia carregada
+const backButton =  document.getElementById('back-button')
+const forwardButton = document.getElementById('forward-button')
 
 async function initializeNews() {
     await loadData()
@@ -25,9 +13,9 @@ function setNews(language, page){
     document.getElementById("aba-noticias").textContent = ganeshData.informacoes[language].aba
     
     const divCards = document.getElementById('div-cards');
-    divCards.innerHTML = '';
+    divCards.innerHTML = '';    //limpar a div antes de fazer qualquer modificação
     
-    if(page == 1){
+    if(page == 1){                                                       //adição de noticias para a primeira pagina
            ganeshData.noticias[language].forEach((noticia, index) => {
         if(index < limite){
             const noticiaCard = document.createElement('div');  
@@ -49,7 +37,7 @@ function setNews(language, page){
     });  
     }
 
-    else{
+    else{                                                                                        //adição de noticias caso a pagina nao seja a inicial
         let count = 0
         for(let i = lastIndex + 1; i < ganeshData.noticias[language].length && count < 5; i++){
             const noticiaCard = document.createElement('div');  
@@ -75,28 +63,29 @@ function setNews(language, page){
 
 }
 
-async function switchNewsLanguage(){
-    const lang = document.getElementById('lang').textContent.toLowerCase()
-    const pageNumber = document.getElementById('page-number').textContent
+[bandeira, idioma].forEach((element) =>{                                        //adicionar a função de trocar o idioma aos elementos da bandeira e nome do idioma
+    element.addEventListener('click', async () =>{
+        const lang = document.getElementById('lang').textContent.toLowerCase()
+        const pageNumber = document.getElementById('page-number').textContent
+    
+        if(lang === "pt-br"){
+            await loadData()
+            setNews('en-us', pageNumber)
+            document.getElementById('lang').textContent = "en-US"
+            document.getElementById("bandeira").src = bandeiraUS
+            document.getElementById('titulo').textContent = "News"
+        }
+        else{
+            await loadData()
+            setNews('pt-br', pageNumber)
+            document.getElementById('lang').textContent = "pt-BR"
+            document.getElementById("bandeira").src = bandeiraBR
+            document.getElementById('titulo').innerHTML = 'Notícias'
+        }
+    })
+})
 
-    if(lang === "pt-br"){
-        await loadData()
-        setNews('en-us', pageNumber)
-        document.getElementById('lang').textContent = "en-US"
-        document.getElementById("bandeira").src = bandeiraUS
-        document.getElementById('titulo').textContent = "News"
-    }
-    else{
-        await loadData()
-        setNews('pt-br', pageNumber)
-        document.getElementById('lang').textContent = "pt-BR"
-        document.getElementById("bandeira").src = bandeiraBR
-        document.getElementById('titulo').innerHTML = 'Notícias'
-    }
-
-}
-
-async function backPage(){
+backButton.addEventListener('click', async () =>{                           //adicionar a função de navegar para a pagina anterior ao respectivo botao de navegaçao
     const pageNumber = document.getElementById('page-number')
     const lang = document.getElementById('lang').textContent.toLowerCase()
     
@@ -112,13 +101,12 @@ async function backPage(){
         alert(ganeshData.informacoes[lang].alertaVolta)
         console.log(index)
     }
-}
+})
 
-async function forwardPage(){
+forwardButton.addEventListener('click', async () =>{                        //adicionar a função de navegar para a pagina seguinte ao respectivo botao de navegaçao
     const pageNumber = document.getElementById('page-number')
     const lang = document.getElementById('lang').textContent.toLowerCase()
-    const maxPage = Math.ceil(ganeshData.noticias[lang].length / limite)
-    //console.log(`Maximo de pags ${maxPage}`)
+    const maxPage = Math.ceil(ganeshData.noticias[lang].length / limite)    
 
     let index = pageNumber.textContent
     if(index < maxPage){
@@ -131,7 +119,7 @@ async function forwardPage(){
     else{
         alert(ganeshData.informacoes[lang].alertaIr)
     }
+})
 
-}
 
-initializeNews()
+initializeNews()    //função executada ao carregar a pagina

@@ -280,3 +280,141 @@ a{
     transform: translateY(-5px);
 }
 
+#footer-noticias{
+    margin-top: 20%; 
+}
+
+#div-noticias{
+    background-color: rgba(39, 38, 38, 0.855);
+    border-radius: 20px;
+   
+    width: 90%;
+    max-width: 973px;
+    
+    
+    aspect-ratio: 973/857; 
+    height: auto; 
+    
+    
+    min-height: min(857px, 80vh);
+    max-height: 90vh; 
+
+    margin: auto;
+    margin-top: 6.5vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center; 
+    padding-top: 40px;
+    padding-bottom: 10px;
+
+    animation: appear;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+}
+
+#div-noticias{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#titulo-n{
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: -5%;
+    margin-bottom: 5%;
+    padding-top: 2%;
+}
+
+#div-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.noticiaCard{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+
+    width: 90%;
+    max-width: 841px;
+    
+    aspect-ratio: 841/102;
+    
+    height: auto;
+    min-height: min(102px, 80vh);
+    max-height: 90vh; 
+    
+    align-self: center;
+    
+
+    transition: 0.3s ease;
+}
+
+.noticiaCard:hover{
+    cursor: pointer;
+    filter: brightness(0.8);
+    
+    transform: translateY(-5px);
+}
+
+.noticiaName{
+    color: #25522E;
+    font-size: large;
+    font-weight: 700;
+    margin-bottom: 4px;
+    margin-left: 15px;
+}
+
+.noticiaDesc{
+   color: #737373;
+   font-size: small;
+   margin-top: 0;
+   padding: 15px;
+   padding-top: 0;
+}
+
+#navigation-buttons{
+    margin-top: 40px;
+}
+
+.navigation{
+    background: none;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #FFF;
+    width: 35px;
+    height: 35px;
+
+    transition: 0.3s ease;
+}
+
+#page-number{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background: #5EDA4A;
+    color: white;
+
+    transition: 0.3s ease;
+}
+
+.navigation:hover{
+    background-color: white;
+    cursor: pointer;
+    color: #2E2C2F;
+    
+}
+
+#page-number:hover{
+    cursor: pointer;
+    filter: brightness(0.9);
+    
+}

@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <script type="module" src="index.js" defer></script>
+    <script type="module" src="global.js"></script>
     <title>Projeto Ganesh</title>
 </head>
 <body>
@@ -18,8 +19,8 @@
         </span>
         <span id="pags-header">
             <a id="aba-noticias" href="noticias.html">Notícias</a>
-            <img onclick="switchLanguage()" id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
-            <label onclick="switchLanguage()" id="lang" for="bandeira">pt-BR</label>
+            <img id="bandeira" src="assets/BR.svg" alt="bandeira do brasil">
+            <label id="lang" for="bandeira">pt-BR</label>
         </span>
     </header>
     <div id="logo-div">
