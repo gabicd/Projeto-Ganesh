@@ -1,12 +1,12 @@
 import { ganeshData, loadData, bandeiraBR, bandeiraUS, bandeira, idioma } from "./global.js"
 const lupa = `<img id="lupa" src="assets/lupa.png" alt="lupa">`
 
-async function initializeSite() {
+async function initializeSite() {   //carregar dados do .JSON e inicializar a pagina
     await loadData()
     setPage('pt-br') //idioma default
 }
 
-function setPage(language){
+function setPage(language){                                                                             //definir os elementos no idioma selecionado
     document.getElementById("resumo-grupo").textContent = ganeshData.informacoes[language].subtitulo
     document.getElementById("sobre-texto1").textContent = ganeshData.informacoes[language].sobre[0]
     document.getElementById("sobre-texto2").textContent = ganeshData.informacoes[language].sobre[1]
@@ -14,7 +14,7 @@ function setPage(language){
 }
 
 
-[bandeira, idioma].forEach((element) =>{
+[bandeira, idioma].forEach((element) =>{                                        //adicionar a função de trocar o idioma aos elementos da bandeira e nome do idioma
     element.addEventListener('click', async () =>{
         const lang = document.getElementById('lang').textContent.toLowerCase()
         if(lang === "pt-br"){
@@ -37,4 +37,4 @@ function setPage(language){
 })
 
 
-initializeSite()
+initializeSite()    //função executada ao carregar a pagina

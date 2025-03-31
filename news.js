@@ -73,14 +73,14 @@ function setNews(language, page){
             setNews('en-us', pageNumber)
             document.getElementById('lang').textContent = "en-US"
             document.getElementById("bandeira").src = bandeiraUS
-            document.getElementById('titulo').textContent = "News"
+            document.getElementById('titulo-n').textContent = "News"
         }
         else{
             await loadData()
             setNews('pt-br', pageNumber)
             document.getElementById('lang').textContent = "pt-BR"
             document.getElementById("bandeira").src = bandeiraBR
-            document.getElementById('titulo').innerHTML = 'Notícias'
+            document.getElementById('titulo-n').innerHTML = 'Notícias'
         }
     })
 })
