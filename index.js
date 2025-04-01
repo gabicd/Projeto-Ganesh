@@ -1,18 +1,28 @@
-import { ganeshData, loadData, bandeiraBR, bandeiraUS, bandeira, idioma } from "./global.js"
-const lupa = `<img id="lupa" src="assets/lupa.png" alt="lupa">`
+import { ganeshData, loadData, bandeira, idioma } from "./global.js"
 
 async function initializeSite() {   //carregar dados do .JSON e inicializar a pagina
     await loadData()
-    setPage('pt-br') //idioma default
+    const idiomaSalvo = localStorage.getItem('idioma')
+    if(!idiomaSalvo){
+        setPage('pt-br')    //idioma default
+    }
+    setPage(idiomaSalvo) 
+    
 }
 
-function setPage(language){                                                                             //definir os elementos no idioma selecionado
+function setPage(language){                                                                            //definir os elementos no idioma selecionado
     document.getElementById("resumo-grupo").textContent = ganeshData.informacoes[language].subtitulo
     document.getElementById("sobre-texto1").textContent = ganeshData.informacoes[language].sobre[0]
     document.getElementById("sobre-texto2").textContent = ganeshData.informacoes[language].sobre[1]
     document.getElementById("aba-noticias").textContent = ganeshData.informacoes[language].aba
-}
+    document.getElementById('lang').textContent = ganeshData.informacoes[language].idioma
+    document.getElementById("bandeira").src = ganeshData.informacoes[language].imagem
+    document.getElementById('titulo').innerHTML = ganeshData.informacoes[language].sobreTitulo
+    document.getElementById('more').innerHTML = ganeshData.informacoes[language].lupa
 
+    const lastLanguage = document.getElementById('lang').textContent.toLowerCase()
+    localStorage.setItem('idioma', lastLanguage)
+}
 
 [bandeira, idioma].forEach((element) =>{                                        //adicionar a função de trocar o idioma aos elementos da bandeira e nome do idioma
     element.addEventListener('click', async () =>{
@@ -20,18 +30,12 @@ function setPage(language){                                                     
         if(lang === "pt-br"){
             await loadData()
             setPage('en-us')
-            document.getElementById('lang').textContent = "en-US"
-            document.getElementById("bandeira").src = bandeiraUS
-            document.getElementById('titulo').innerHTML = 'About <span id="highlight">Ganesh</span>'
-            document.getElementById('more').innerHTML = `${lupa}Learn More`
+
         }
         else{
             await loadData()
             setPage('pt-br')
-            document.getElementById('lang').textContent = "pt-BR"
-            document.getElementById("bandeira").src = bandeiraBR
-            document.getElementById('titulo').innerHTML = 'Sobre o <span id="highlight">Ganesh</span>'
-            document.getElementById('more').innerHTML = `${lupa}Saiba Mais`
+
         }
     })
 })

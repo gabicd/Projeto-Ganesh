@@ -9,8 +9,12 @@
                 "Nos conectamos com o público por meio de diversas iniciativas de divulgação, incluindo nosso canal no YouTube, um processo seletivo anual e a participação em competições de Capture the Flag (CTF). Nosso desempenho consistente e classificações elevadas nesses torneios nos posicionam entre os melhores times do Brasil e como a principal equipe universitária do país. Cada área de estudo realiza reuniões semanais focadas no desenvolvimento de minicursos, ferramentas e materiais de estudo, com a maioria desses recursos disponíveis publicamente no GitHub. Através desses esforços, contribuímos continuamente para a expansão da área de segurança da informação no Brasil."
             ],
             "aba": "Notícias",
+            "imagem":"assets/BR.svg",
+            "idioma": "pt-BR",
             "alertaVolta": "Você já está na primeira página!",
-            "alertaIr": "Você já está na última página!"
+            "alertaIr": "Você já está na última página!",
+            "sobreTitulo": "Sobre o <span id=\"highlight\">Ganesh</span>",
+            "lupa": "<img id=\"lupa\" src=\"assets/lupa.png\">Saiba Mais"
         },
         "en-us":{
             "grupo:":"Ganesh",
@@ -20,8 +24,12 @@
                 "We connect with the public through various outreach initiatives, including our YouTube channel, an annual recruitment process, and participation in Capture the Flag (CTF) competitions. Our consistent high rankings in these competitions position us among Brazil’s top teams and the country's leading university team. Each study area holds weekly meetings focused on developing mini-courses, tools, and study materials, with most of these resources publicly accessible on GitHub. Through these efforts, we continually contribute to and expand the field of information security in Brazil."            
             ],
             "aba": "News",
+            "imagem":"assets/US.svg",
+            "idioma": "en-US",
             "alertaVolta": "You're already at the first page!",
-            "alertaIr": "You're already at the last page!"
+            "alertaIr": "You're already at the last page!",
+            "sobreTitulo": "About <span id=\"highlight\">Ganesh</span>",
+            "lupa": "<img id=\"lupa\" src=\"assets/lupa.png\">Learn More"
         }
     },
     "noticias":{

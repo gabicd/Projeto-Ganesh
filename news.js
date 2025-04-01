@@ -1,4 +1,4 @@
-import { ganeshData, loadData, bandeiraBR, bandeiraUS, bandeira, idioma } from "./global.js";
+import { ganeshData, loadData, bandeira, idioma } from "./global.js";
 const limite = 5    //limite de noticias por pagina
 let lastIndex       //guarda o index da ultima noticia carregada
 const backButton =  document.getElementById('back-button')
@@ -6,32 +6,32 @@ const forwardButton = document.getElementById('forward-button')
 
 async function initializeNews() {
     await loadData()
-    setNews('pt-br', 1) //idioma e pagina default
+    const idiomaSalvo = localStorage.getItem('idioma')
+    if(!idiomaSalvo){
+        setNews('pt-br', 1)    
+    }
+    setNews(idiomaSalvo, 1) 
 }
 
 function setNews(language, page){
     document.getElementById("aba-noticias").textContent = ganeshData.informacoes[language].aba
     
+    document.getElementById('lang').textContent = ganeshData.informacoes[language].idioma
+    document.getElementById("bandeira").src = ganeshData.informacoes[language].imagem
+    document.getElementById('titulo-n').textContent = ganeshData.informacoes[language].aba
+
+    const lastLanguage = document.getElementById('lang').textContent.toLowerCase()
+    localStorage.setItem('idioma', lastLanguage)
+
     const divCards = document.getElementById('div-cards');
     divCards.innerHTML = '';    //limpar a div antes de fazer qualquer modificação
     
     if(page == 1){                                                       //adição de noticias para a primeira pagina
            ganeshData.noticias[language].forEach((noticia, index) => {
         if(index < limite){
-            const noticiaCard = document.createElement('div');  
-            noticiaCard.className = 'noticiaCard';
-    
-            const noticiaName = document.createElement('p');   
-            noticiaName.textContent = `${noticia.titulo}`;
-            noticiaName.className = 'noticiaName'
-            noticiaCard.appendChild(noticiaName);
-    
-            const noticiaDesc = document.createElement('p');   
-            noticiaDesc.textContent = `${noticia.descricao}`;
-            noticiaDesc.className = 'noticiaDesc'
-            noticiaCard.appendChild(noticiaDesc);
-    
-            divCards.appendChild(noticiaCard)
+
+            createCards(noticia, divCards)
+
             lastIndex = index
         }
     });  
@@ -40,26 +40,12 @@ function setNews(language, page){
     else{                                                                                        //adição de noticias caso a pagina nao seja a inicial
         let count = 0
         for(let i = lastIndex + 1; i < ganeshData.noticias[language].length && count < 5; i++){
-            const noticiaCard = document.createElement('div');  
-            noticiaCard.className = 'noticiaCard';
-    
-            const noticiaName = document.createElement('p');   
-            noticiaName.textContent = `${ganeshData.noticias[language][i].titulo}`;
-            noticiaName.className = 'noticiaName'
-            noticiaCard.appendChild(noticiaName);
-    
-            const noticiaDesc = document.createElement('p');   
-            noticiaDesc.textContent = `${ganeshData.noticias[language][i].descricao}`;
-            noticiaDesc.className = 'noticiaDesc'
-            noticiaCard.appendChild(noticiaDesc);
-    
-            divCards.appendChild(noticiaCard)
+            
+            createCards(ganeshData.noticias[language][i], divCards)
 
             count++
         }
     }
-
-
 
 }
 
@@ -71,16 +57,10 @@ function setNews(language, page){
         if(lang === "pt-br"){
             await loadData()
             setNews('en-us', pageNumber)
-            document.getElementById('lang').textContent = "en-US"
-            document.getElementById("bandeira").src = bandeiraUS
-            document.getElementById('titulo-n').textContent = "News"
         }
         else{
             await loadData()
             setNews('pt-br', pageNumber)
-            document.getElementById('lang').textContent = "pt-BR"
-            document.getElementById("bandeira").src = bandeiraBR
-            document.getElementById('titulo-n').innerHTML = 'Notícias'
         }
     })
 })
@@ -120,6 +100,25 @@ forwardButton.addEventListener('click', async () =>{                        //ad
         alert(ganeshData.informacoes[lang].alertaIr)
     }
 })
+
+function createCards(noticia, divCards){
+
+    const noticiaCard = document.createElement('div');  
+    noticiaCard.className = 'noticiaCard';
+
+    const noticiaName = document.createElement('p');   
+    noticiaName.textContent = `${noticia.titulo}`;
+    noticiaName.className = 'noticiaName'
+    noticiaCard.appendChild(noticiaName);
+
+    const noticiaDesc = document.createElement('p');   
+    noticiaDesc.textContent = `${noticia.descricao}`;
+    noticiaDesc.className = 'noticiaDesc'
+    noticiaCard.appendChild(noticiaDesc);
+
+    divCards.appendChild(noticiaCard)
+
+}
 
 
 initializeNews()    //função executada ao carregar a pagina
